@@ -8,6 +8,8 @@ You may use the python converter to make a bin from .dat or .raw file, and read 
 
 ![](./demo/unity.jpg)
 
+> you may also opt-out chunk system and render as cubes although it's not recommended
+
 ## MagicaVoxel
 
 Or create a .vox file from .dat or .raw 3D image.
