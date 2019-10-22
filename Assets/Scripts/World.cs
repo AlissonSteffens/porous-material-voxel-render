@@ -12,8 +12,10 @@ public class World : MonoBehaviour
     public GameObject chunk;
     public GameObject[,,] chunks;
     public int chunkSize = 100;
+    public bool UseChunks = true;
     public string ArquivoPoros = "poros";
     public float scale = 1f;
+    public GameObject cube;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,35 @@ public class World : MonoBehaviour
 
         data = WorldGetter.GetWorldData(ArquivoPoros);
 
+        if (UseChunks)
+        {
+            CreateWithChunks();
+        }
+        else
+        {
+            CreateWithCubes();
+        }
+
+    }
+
+    void CreateWithCubes()
+    {
+        for (int x = 0; x < worldX; x++)
+        {
+            for (int y = 0; y < worldY; y++)
+            {
+                for (int z = 0; z < worldZ; z++)
+                {
+                    if (data[x,y,z] == 2)
+                    {
+                        Instantiate(cube, new Vector3(x, y, z), Quaternion.identity);
+                    }
+                }
+            }
+        }
+    }
+
+    void CreateWithChunks(){
         chunks = new GameObject[Mathf.FloorToInt(worldX / chunkSize), Mathf.FloorToInt(worldY / chunkSize), Mathf.FloorToInt(worldZ / chunkSize)];
 
         for (int x = 0; x < chunks.GetLength(0); x++)
@@ -32,11 +63,11 @@ public class World : MonoBehaviour
                 {
 
                     chunks[x, y, z] = Instantiate(chunk,
-                     new Vector3(x * chunkSize * scale, y * chunkSize * scale, z * chunkSize* scale),
+                     new Vector3(x * chunkSize * scale, y * chunkSize * scale, z * chunkSize * scale),
                      new Quaternion(0, 0, 0, 0)) as GameObject;
 
                     Chunk newChunkScript = chunks[x, y, z].GetComponent("Chunk") as Chunk;
-                 
+
 
                     newChunkScript.worldGO = gameObject;
                     newChunkScript.chunkSize = chunkSize;
@@ -48,7 +79,6 @@ public class World : MonoBehaviour
                 }
             }
         }
-
     }
 
 

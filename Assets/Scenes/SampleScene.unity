@@ -370,5 +370,16 @@ PrefabInstance:
       propertyPath: scale
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 1940725871346675494, guid: 781afc86aba367b46bc0350eac09d280,
+        type: 3}
+      propertyPath: cube
+      value: 
+      objectReference: {fileID: 805439378829770037, guid: 1bb32e0b172af3b41976200353e87879,
+        type: 3}
+    - target: {fileID: 1940725871346675494, guid: 781afc86aba367b46bc0350eac09d280,
+        type: 3}
+      propertyPath: UseChunks
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 781afc86aba367b46bc0350eac09d280, type: 3}
